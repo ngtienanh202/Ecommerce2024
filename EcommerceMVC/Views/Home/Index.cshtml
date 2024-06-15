@@ -1,0 +1,136 @@
+﻿@model EcommerceMVC.ViewModels.HomeVM
+
+<!-- Hero Start -->
+<div class="container-fluid py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-md-12 col-lg-7">
+                <h4 class="mb-3 text-secondary">100% Sản phẩm tươi</h4>
+                <h1 class="mb-5 display-3 text-primary">Nơi cung cấp thực phẩm chất lượng</h1>
+                <div class="position-relative mx-auto">
+                    <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="number" placeholder="Search">
+                    <button type="submit" class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100" style="top: 0; right: 25%;">Submit Now</button>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-5">
+                <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active rounded">
+                            <img src="~/Hinh/Others/cach-chon-hoa-qua-phu-hop-trong-che-do-an-uong-han-che-duong-1-768x483-1.jpg" class="img-fluid w-100 bg-secondary rounded" style="height:316px;" alt="First slide">
+                            <a href="#" class="btn px-4 py-2 text-white rounded">Trái cây</a>
+                        </div>
+                        <div class="carousel-item rounded">
+                            <img src="~/Hinh/Others/thịt.jpg" class="img-fluid w-100 rounded" style="height:316px;" alt="Second slide">
+                            <a href="#" class="btn px-4 py-2 text-white rounded">Thịt</a>
+                        </div>
+                        <div class="carousel-item rounded">
+                            <img src="~/Hinh/Others/image1.jpg" class="img-fluid w-100 rounded" style="height:316px;" alt="Second slide">
+                            <a href="#" class="btn px-4 py-2 text-white rounded">Rau củ</a>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+<!-- Fruits Shop Start-->
+<div class="container-fluid fruite py-5">
+    <div class="container py-5">
+        <div class="tab-class text-center">
+            <div class="row g-4">
+                <div class="col-lg-4 text-start">
+                    <h1>Sản phẩm của chúng tôi</h1>
+                </div>
+                <div class="col-lg-8 text-end">
+                    <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                        <li class="nav-item">
+                            <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
+                                <span class="text-dark" style="width: 130px;">Tất cả</span>
+                            </a>
+                        </li>
+
+                        @foreach(var item in Model.listLoai)
+                        {
+                            <li class="nav-item">
+                                <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-@item.MaLoai">
+                                    <span class="text-dark" style="width: 130px;">@item.TenLoai</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                @foreach(var item in Model.listHangHoa)
+                                {
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="~/Hinh/HangHoa/@item.Hinh" class="img-fluid w-100 rounded-top" alt="@item.TenHangHoa">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.TenLoai</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>@item.TenHangHoa</h4>
+                                                <p>@item.MoTaNgan</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">@item.DonGia VNĐ</p>
+                                                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.MaHangHoa" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Thêm vào giỏ</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @foreach(var item in Model.listLoai)
+                {
+                    <div id="tab-@item.MaLoai" class="tab-pane fade show p-0">
+                        <div class="row g-4">
+                            <div class="col-lg-12">
+                                <div class="row g-4">
+                                    @foreach(var hanghoa in Model.listHangHoa.Where(hh => hh.MaLoai == item.MaLoai))
+                                    {
+                                        <div class="col-md-6 col-lg-4 col-xl-3">
+                                            <div class="rounded position-relative fruite-item">
+                                                <div class="fruite-img">
+                                                    <img src="~/Hinh/HangHoa/@hanghoa.Hinh" class="img-fluid w-100 h-75 rounded-top" alt="@hanghoa.TenHangHoa">
+                                                </div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.TenLoai</div>
+                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                    <h4>@hanghoa.TenHangHoa</h4>
+                                                    <p>@hanghoa.MoTaNgan</p>
+                                                    <div class="d-flex justify-content-between flex-lg-wrap">
+                                                        <p class="text-dark fs-5 fw-bold mb-0">@hanghoa.DonGia VNĐ</p>
+                                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@hanghoa.MaHangHoa" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Thêm vào giỏ</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>      
+    </div>
+</div>
+<!-- Fruits Shop End-->
+

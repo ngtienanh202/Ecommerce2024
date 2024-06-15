@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EcommerceMVC.ViewModels.TrangThaiVM>
+
+@{
+    ViewData["Title"] = "Lịch sử đặt hàng";
+    var first = true;
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Đơn hàng của tôi</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+        <li class="breadcrumb-item active text-white">Lịch sử đặt hàng</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <ul class="nav nav-tabs">
+            @foreach(var trangThai in Model)
+            {
+                <li class="nav-item">
+                    <a style="cursor: pointer" class="nav-link @(first ? "active":"")" data-id="@trangThai.MaTrangThai">@trangThai.TenTrangThai</a>
+                </li>
+
+                first = false;
+            }
+        </ul>
+
+        <div class="table-responsive">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+   <script>
+        $(document).ready(function () {
+            $('.nav-link').click(function () {
+                var maTrangThai = $(this).data('id');
+                $('.nav-item a').removeClass('active');
+                $(this).addClass('active');
+
+                $.ajax({
+                    url: '/Cart/GetOrderByStatus',
+                    type: 'GET',
+                    data: { id: maTrangThai },
+                    success: function (data) {
+                        $('.table-responsive').html(data);
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra khi tải dữ liệu.');
+                    }
+                });
+            });
+
+            $('a[data-id=-1]').click();
+        });
+   </script>
+}
