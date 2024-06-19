@@ -41,26 +41,13 @@
     @await Html.PartialAsync("_Footer")
 
     @* Chat bot *@
-    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle position-fixed d-flex justify-content-center align-items-center mb-5" style="right:30px; bottom:90px; width:45px; height:45px;" id="openChatBotButton">
-        <i class="fa fa-robot"></i>
-    </a>
-
-    !-- Cửa sổ chat bot -->
-    <div class="card position-fixed m-3" style="width: 300px; right:70px; bottom: 10px; display: none; z-index:99;" id="chatBotWindow">
-        <div class="card-header bg-secondary text-white">
-            <i class="fas fa-circle fa-xs mr-2" style="color: #23d741;"></i> Chat với Bot
-            <button type="button" class="btn-close float-end" id="closeChatBotButton"></button>
-        </div>
-        <div class="card-body" style="height: 300px; overflow-y: scroll;" id="chatBotMessages">
-            <!-- Nội dung chat ở đây -->
-        </div>
-        <div class="card-footer">
-            <div class="input-group">
-                <input type="text" class="form-control" id="messageChatBotInput" placeholder="Nhập tin nhắn">
-                <button class="btn btn-primary" id="sendChatBotButton">Gửi</button>
-            </div>
-        </div>
-    </div>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1">
+    </script>
+    <df-messenger intent="WELCOME"
+                  chat-title="EcommerceFreshFood"
+                  agent-id="0c603e92-9203-4f77-bfb1-31478c0dd806"
+                  language-code="vi">       
+    </df-messenger>
     
     @* Chat *@
     <a href="#" class="btn btn-outline-primary border-3 border-primary rounded-circle position-fixed d-flex justify-content-center align-items-center mb-5" style="right:30px; bottom:30px; width:45px; height:45px;" id="openChatButton">
@@ -85,7 +72,7 @@
     </div>
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top" style="right:30px; bottom:130px; width:45px; height:45px "><i class="fa fa-arrow-up"></i></a>
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

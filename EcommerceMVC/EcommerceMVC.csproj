@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -11,6 +11,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Bot.Builder" Version="4.22.4" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.22.4" />
+    <PackageReference Include="Microsoft.Bot.Connector" Version="4.22.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">

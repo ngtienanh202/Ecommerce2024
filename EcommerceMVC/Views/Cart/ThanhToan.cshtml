@@ -71,9 +71,9 @@
                                         </div>
                                     </th>
                                     <td class="py-5">@item.TenHh</td>
-                                    <td class="py-5">$ @item.DonGia</td>
+                                    <td class="py-5">@item.DonGia VNĐ</td>
                                     <td class="py-5">@item.SoLuong</td>
-                                    <td class="py-5">$ @item.ThanhTien</td>
+                                    <td class="py-5">@item.ThanhTien VNĐ</td>
                                 </tr>
                             }
                                 <tr>
@@ -86,7 +86,7 @@
                                     </td>
                                     <td class="py-5">
                                         <div class="py-3 border-bottom border-top">
-                                            <p class="mb-0 text-dark">$ @Model.Sum(p => p.ThanhTien).ToString("#,##0.00")</p>
+                                            <p class="mb-0 text-dark">@Model.Sum(p => p.ThanhTien).ToString("#,##0.00") VNĐ</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -103,7 +103,7 @@
                                         </div>
                                         <div class="form-check text-start">
                                             <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-2" name="Shipping-1" value="Shipping">
-                                            <label class="form-check-label" for="Shipping-2">Chi phí: $15.00</label>
+                                            <label class="form-check-label" for="Shipping-2">Chi phí: 15000 VNĐ</label>
                                         </div>
                                     </td>
                                 </tr>
@@ -117,7 +117,7 @@
                                     <td class="py-5"></td>
                                     <td class="py-5">
                                         <div class="py-3 border-bottom border-top">
-                                            <p class="mb-0 text-dark">$ @Model.Sum(p => p.ThanhTien)</p>
+                                            <p class="mb-0 text-dark">@Model.Sum(p => p.ThanhTien) VNĐ</p>
                                         </div>
                                     </td>
                                 </tr>

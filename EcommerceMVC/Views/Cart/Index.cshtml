@@ -95,18 +95,18 @@
                         <h1 class="display-6 mb-4">Thành tiền <span class="fw-normal">giỏ hàng</span></h1>
                         <div class="d-flex justify-content-between mb-4">
                             <h5 class="mb-0 me-4">Tổng phụ:</h5>
-                            <p id="tong-phu" class="mb-0">$ @Model.Sum(p => p.ThanhTien)</p>
+                            <p id="tong-phu" class="mb-0"> @Model.Sum(p => p.ThanhTien) VNĐ</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h5 class="mb-0 me-4">Phí ship: </h5>
                             <div class="">
-                                <p class="mb-0">$0</p>
+                                <p class="mb-0">0 VNĐ</p>
                             </div>
                         </div>
                     </div>
                     <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                         <h5 class="mb-0 ps-4 me-4">Tổng tiền</h5>
-                        <p id="tong-tien" class="mb-0 pe-4">$ @Model.Sum(p => p.ThanhTien)</p>
+                        <p id="tong-tien" class="mb-0 pe-4"> @Model.Sum(p => p.ThanhTien) VNĐ</p>
                     </div>
                     <a class="btn border-secondary rounded-pill px-4 py-3 
                                 text-primary text-uppercase mb-4 ms-4" asp-action="ThanhToan" asp-controller="Cart">Thanh toán</a>
@@ -195,7 +195,7 @@
                         // Tính tổng phụ và tổng tiền
                         var tongPhu = 0;
                         var tongTien = 0;
-                        $('#thanh-tien').each(function () {
+                        VNĐ('#thanh-tien').each(function () {
                             tongPhu += parseFloat($(this).text());
                             tongTien += parseFloat($(this).text()); // Giả sử phí ship là 0
                         });
